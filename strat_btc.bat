@@ -1,0 +1,1 @@
+D:\Bitcoin\bitcoin-qt.exe -server -datadir="D:/data" -rest -rpcbind=127.0.0.1  -rpcuser=RPCuser -rpcpassword=RPCpasswd

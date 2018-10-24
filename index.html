@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	</head>
+	<body>
+		比特币客户端的启动方式：（已写成BAT脚本）<br/>
+		bitcoin-qt.exe -server -datadir="f:/data" -rest -rpcbind=127.0.0.1  -rpcuser=RPCuser -rpcpassword=RPCpasswd
+		<hr/>
+		生成WEB界面：<br/>
+		<a href="./web/web.php"  target="view_window">生成Block、TX</a><br/>
+		<a href="./web/web_menu.php"  target="view_window">生成目录</a>
+		<hr/>
+		获取Block信息：(如需修改每次获取的数量请在源代码39行修改)<br/>
+		<a href="./get_block_from_btc_client/get_block_from_btc_client.php"  target="view_window">生成目录</a>
+		<hr/>
+		计算比特币的余额：（需要优化，新的地址则进行一次扫描）<br/>
+		<a href="./cal_btc/cal_btc.php"  target="view_window">计算比特币的余额</a>
+		<hr/>
+		对比当前地址是否在地址库中(需要优化，默认对比100个)<br/>
+		<a href="./contrast/contrast.php"  target="view_window">对比当前地址是否在地址库中</a>
+		<hr/>
+		显示当前各地址的比特币数量：<br/>
+		<a href="./show_btc/show_btc.php"  target="view_window">显示当前各地址的比特币数量</a>
+		<hr/>
+		导入新生成的地址：<br/>
+		1、 将数据导入临时表<br/>
+		（1）、命令行下连接数据库：`mysql -u root -p`<br/>
+		（2）、转到对应的数据库：`use btc`<br/>
+		（3）、导入数据：load data infile "e:/test.txt" into table `temp_btc` fields terminated by ',';<br/>
+		2、将数据导入正式表<br/>
+		<a href="./new_insert/new_insert.php"  target="view_window">导入新生成的地址</a>
+		<hr/>
+		备份:<br/>
+		<a>mysqldump -uroot -proot --databases btc >f:/20180606.sql</a>
+		<hr/>
+		还原:(登录后使用)<br/>
+		#mysql　数据库名　<　文件名 <br/>
+		#source　/tmp/xxx.sql　　<br/>
+		<br/><br/><br/>
+		<hr/>
+		注意事项：<br/>
+		1、mysql配置文件设置。<br/>
+		由于数据可能会很大，导致查询太长，需要设置[mysqld]中的变量:<br/>
+		[mysqld]<br/>
+		max_allowed_packet = 64M<br/>
+		<hr/>
+	</body>
+</html>
